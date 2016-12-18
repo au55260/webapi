@@ -50,6 +50,28 @@
             <artifactId>jersey-media-moxy</artifactId>
         </dependency>
         -->
+        
+        <!--             Hibernate Configured -->
+        
+             <dependency>
+		    	<groupId>org.hibernate</groupId>
+		    	<artifactId>hibernate-core</artifactId>
+		    	<version>3.6.3.Final</version>
+    		</dependency>
+		    <dependency>
+		    	<groupId>org.hibernate</groupId>
+		    	<artifactId>hibernate-entitymanager</artifactId>
+		    	<version>3.6.3.Final</version>
+		    </dependency>
+        
+<!--         MySql Configured -->
+
+	        <dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.16</version>
+			</dependency>
+    
     </dependencies>
     <properties>
         <jersey.version>2.16</jersey.version>
