@@ -12,4 +12,10 @@ public class Welcome {
 	public String welcome(){
 		return "Welcome to the Web Api";
 	}
+	@GET
+	@Path("getStatus")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getStatus(){
+		return "API is Up and Running !";
+	}
 }
