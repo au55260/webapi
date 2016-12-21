@@ -11,10 +11,11 @@ private static final SessionFactory sessionFactory = buildSessionFactory();
 		try {
 			// Create the SessionFactory from hibernate.cfg.xml
 			System.out.println("In Hibernate Session Factory");
-			return new Configuration().configure().buildSessionFactory();
-		} catch (Throwable ex) {
+			return new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		} catch (Exception ex) {
 			System.err.println("Unnabale to create SessionFactory object :" + ex); 
-			throw new ExceptionInInitializerError(ex);
+			//throw new ExceptionInInitializerError(ex);
+			return null;
 		} 
 	}
 	

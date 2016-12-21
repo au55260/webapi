@@ -3,6 +3,7 @@ package org.web.api.beans;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 /**
  * This class represents the Member
@@ -16,19 +17,27 @@ public class Member implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private long userId;
+	@Id
+	private int id;
+	private String userId;
 	private long accountType = 0;
 	private String firstName;
 	private String lastName;
 	private String middleName;
 	private String email;
 	private String password;
+	 
 	
-	public long getUserId() {
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public long getAccountType() {

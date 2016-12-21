@@ -4,22 +4,26 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.web.api.beans.Member;
 import org.web.api.service.MemberServices;
+import org.web.api.service.MemberServicesImpl;
 import org.web.api.service.UserType;
 
-@Path("member")
+@Path("/member")
 public class MemberController {// Anurag and KD start working together on API Of SOCIETY
 	
-	MemberServices memberServices;
+	MemberServices memberServices = new MemberServicesImpl();
 	/**
 	 *  This is just a Testing API, to check the health of the Web-Service
 	 *  @return Hi I am Up And Running !
 	 *  @author Anurag Upadhyay
 	 */
 	@GET
-	@Path("hi")
+	@Path("/hi")
+	@Produces(MediaType.APPLICATION_JSON)
 	public String helloServices(){
 		return "Hi I am Up And Running !";
 	}
@@ -41,11 +45,12 @@ public class MemberController {// Anurag and KD start working together on API Of
 	 * public
 	 */
 	@GET
-	@Path("login/(user)/{password}")
+	@Path("/login/{user}/{password}")
+	@Produces(MediaType.APPLICATION_JSON)
 	public Member loginMember(@PathParam("user") String userId, @PathParam("password") String password){
-		
-		
-		return this.memberServices.loginUser(userId,password, UserType.MEMBER);
+		//System.out.println("lodin method clicked");
+		//return null;
+		return memberServices.loginUser(userId,password, UserType.MEMBER);
 	}
 	
 	
@@ -57,7 +62,7 @@ public class MemberController {// Anurag and KD start working together on API Of
 	 * @author Anurag Upadhyay
 	 */
 	@POST
-	@Path("logout")
+	@Path("/logout")
 	public void logout () {
 		
 		this.memberServices.logout();
