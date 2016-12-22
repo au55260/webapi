@@ -26,7 +26,6 @@ public class MemberDaoImpl implements MemberDao {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
 		return member;
 	}
 
@@ -34,6 +33,32 @@ public class MemberDaoImpl implements MemberDao {
 	public void logout() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	@Override
+	public Member registerNewMember(Member objMember) {
+		//Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+		Member member= null;
+		MemberAuthRegisterNew authRegisterNew;
+		
+		try {
+			member = objMember;
+			authRegisterNew = new MemberAuthRegisterNew();
+			authRegisterNew.setMemberData(member);
+			authRegisterNew.startFunction();
+			if(authRegisterNew.getResult()!=null)
+			{
+				member = authRegisterNew.getResult();
+			}else {
+				 member= null;
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return member;
 	}
 
 }

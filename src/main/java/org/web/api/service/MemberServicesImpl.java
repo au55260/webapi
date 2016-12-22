@@ -20,7 +20,11 @@ public  class MemberServicesImpl implements MemberServices {
 		
 	}
 
-	
- 
+	@Override
+	public Member registerNewMember(Member prm_objMember) {
+		System.out.println("Hello");
+		
+		return dao.registerNewMember(prm_objMember);
+	}
 
 }

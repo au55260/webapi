@@ -1,5 +1,6 @@
 package org.web.api.controller;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -46,10 +47,8 @@ public class MemberController {// Anurag and KD start working together on API Of
 	 */
 	@GET
 	@Path("/login/{user}/{password}")
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Member loginMember(@PathParam("user") String userId, @PathParam("password") String password){
-		//System.out.println("lodin method clicked");
-		//return null;
 		Member member = new Member();
 		member = memberServices.loginUser(userId,password, UserType.MEMBER);
 		System.out.println(member);
@@ -67,8 +66,45 @@ public class MemberController {// Anurag and KD start working together on API Of
 	@POST
 	@Path("/logout")
 	public void logout () {
-		
 		this.memberServices.logout();
 	}
+	
+	/**
+	 * This functioncall, implements the Member Registration process. If the Member does not exist then create one else return the one already existing. 
+	 * @param prm_hBorrowerData Format for the input data is as follows:
+	 * <pre>
+	 * {
+	 * 	firstName: "FirstName",
+	 * 	lastName : "LastName",
+	 * 	middleName : "MiddleName",
+	 * 	email : "test@test.com", 
+	 * 	password : "DummyPassword", 
+	 * 	accountType : Any value between 0-3
+	 * }
+	 * </pre>
+	 * @return A Member Object. Format:
+	 * <pre>
+	 * {
+	 * 	firstName: "FirstName",
+	 * 	lastName : "LastName",
+	 * 	middleName : "MiddleName",
+	 * 	accountType : Any value between 0-3
+	 * }
+	 * </pre>
+	 * @author Anurag Upadhyay
+	 */
+	
+	@POST
+	@Path("/registerNewMember")	
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Member registerNewMember(Member member) {
+		return memberServices.registerNewMember(member);
+		
+	}
+
+	
+	
+	
 }
 	

@@ -16,6 +16,10 @@ public interface MemberDao {
 	 * Logout API.
 	 */
 	public void logout();
+	/**
+	 * Parse out the Data in the Hashmap and register the User.
+	 */
+	public Member registerNewMember (Member prm_objMember);
 	
 	
 
