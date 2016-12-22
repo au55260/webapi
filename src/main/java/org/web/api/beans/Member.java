@@ -3,6 +3,7 @@ package org.web.api.beans;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -20,6 +21,7 @@ public class Member implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue
 	private int id;
 	private String userId;
 	private long accountType = 0;

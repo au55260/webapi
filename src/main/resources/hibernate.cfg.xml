@@ -26,7 +26,7 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
         
-        <property name="hbm2ddl.auto">updaate</property>
+        <property name="hbm2ddl.auto">update</property>
 
     <!-- Disable the second-level cache -->  
 <!-- 	<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>  -->
