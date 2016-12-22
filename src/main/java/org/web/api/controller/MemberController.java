@@ -50,7 +50,10 @@ public class MemberController {// Anurag and KD start working together on API Of
 	public Member loginMember(@PathParam("user") String userId, @PathParam("password") String password){
 		//System.out.println("lodin method clicked");
 		//return null;
-		return memberServices.loginUser(userId,password, UserType.MEMBER);
+		Member member = new Member();
+		member = memberServices.loginUser(userId,password, UserType.MEMBER);
+		System.out.println(member);
+		return member;
 	}
 	
 	

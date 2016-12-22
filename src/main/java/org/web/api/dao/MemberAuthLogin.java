@@ -1,8 +1,10 @@
 package org.web.api.dao;
 
 import org.apache.commons.lang3.StringUtils;
+import org.hibernate.Session;
 import org.web.api.beans.Member;
 import org.web.api.service.UserType;
+import org.web.api.utils.HibernateUtils;
 
 public class MemberAuthLogin {
 
@@ -20,14 +22,14 @@ public class MemberAuthLogin {
 			if (StringUtils.isBlank(this.password)) {
 			}else if (StringUtils.isBlank(this.userId)) {
 			} else {
-			//	this.findTheUserWithThisEmail();
+				this.findTheUserWithThisEmail();
 			}
 			if (null == this.objMemberFoundWithTheEmail) {
 			}
-		/*	else if (this.passwordsMatch()) {
+			else if (this.passwordsMatch()) {
 				this.Return = this.objMemberFoundWithTheEmail;
-			}*/
-			
+			}
+			 
 			
 			
 		} catch (Exception e) {
@@ -37,14 +39,16 @@ public class MemberAuthLogin {
 	
 	private void findTheUserWithThisEmail () {
 		
+		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
 		
-		
-		
+		this.objMemberFoundWithTheEmail = (Member) session.get(Member.class, 1);
+		System.out.println("Hello  "+ objMemberFoundWithTheEmail);
 	}
 	
-/*	private boolean passwordsMatch () {
-		return this.g_objPasswordEncoder.matches(this.userId.toLowerCase() + "-" + this.password, this.objMemberFoundWithTheEmail.getPassword());
-	}*/
+  private boolean passwordsMatch () {
+		return  this.password.toLowerCase().equals(this.objMemberFoundWithTheEmail.getPassword());
+	}  
 
 	
 	
