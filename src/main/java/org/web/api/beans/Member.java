@@ -5,12 +5,14 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 /**
  * This class represents the Member
  * @author Anurag Upadhyay 
  */
 @Entity
 @Table(name = "MEMBER")
+@XmlRootElement
 public class Member implements Serializable {
 	
 	/**

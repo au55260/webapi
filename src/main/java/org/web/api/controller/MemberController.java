@@ -23,7 +23,7 @@ public class MemberController {// Anurag and KD start working together on API Of
 	 */
 	@GET
 	@Path("/hi")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_HTML)
 	public String helloServices(){
 		return "Hi I am Up And Running !";
 	}
@@ -46,7 +46,7 @@ public class MemberController {// Anurag and KD start working together on API Of
 	 */
 	@GET
 	@Path("/login/{user}/{password}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_XML)
 	public Member loginMember(@PathParam("user") String userId, @PathParam("password") String password){
 		//System.out.println("lodin method clicked");
 		//return null;
