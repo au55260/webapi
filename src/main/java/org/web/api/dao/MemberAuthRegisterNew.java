@@ -45,8 +45,8 @@ public class MemberAuthRegisterNew {
 		 List list;
 		 Session session = HibernateUtils.getSessionFactory().getCurrentSession();
 		 session.beginTransaction();
-		 Query  query = session.createQuery("from Member where email= ?");
-		 query.setString(0, this.requestedData.getEmail());
+		 Query  query = session.createQuery("from Member where userId= ?");
+		 query.setString(0, this.requestedData.getUserId());
 		 list =  query.list();
 		 result = list.size()>0;
 		 if(result){

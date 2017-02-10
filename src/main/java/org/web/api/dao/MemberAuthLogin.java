@@ -1,6 +1,9 @@
 package org.web.api.dao;
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.web.api.beans.Member;
 import org.web.api.service.UserType;
@@ -41,13 +44,17 @@ public class MemberAuthLogin {
 		
 		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		
-		this.objMemberFoundWithTheEmail = (Member) session.get(Member.class, 1);
+		Query query = session.createQuery("from Member where userId= ? and password = ?");
+		query.setString(0, userId);
+		query.setString(1, password);
+		List<Member>  list = query.list();
+		//this.objMemberFoundWithTheEmail = (Member) session.get(Member.class, 5);
+		this.objMemberFoundWithTheEmail= list.get(0);
 		System.out.println("Hello  "+ objMemberFoundWithTheEmail);
 	}
 	
   private boolean passwordsMatch () {
-		return  this.password.toLowerCase().equals(this.objMemberFoundWithTheEmail.getPassword());
+		return  this.password.equals(this.objMemberFoundWithTheEmail.getPassword());
 	}  
 
 	

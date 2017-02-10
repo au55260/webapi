@@ -80,6 +80,12 @@ public class Member implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", userId=" + userId + ", accountType=" + accountType + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", middleName=" + middleName + ", email=" + email + ", password="
+				+ password + "]";
+	}
 	
 	
 	
