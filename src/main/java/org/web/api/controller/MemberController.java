@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.ext.Provider;
 
 import org.apache.commons.lang3.StringUtils;
 import org.web.api.beans.Member;
@@ -24,7 +25,7 @@ import org.web.api.beans.Search;
 import org.web.api.service.MemberServices;
 import org.web.api.service.MemberServicesImpl;
 import org.web.api.service.UserType;
-
+@Provider
 @Path("/member")
 public class MemberController {// Anurag and KD start working together on API Of SOCIETY
 	
@@ -109,7 +110,7 @@ public class MemberController {// Anurag and KD start working together on API Of
 	
 	@POST
 	@Path("/registerNewMember")	
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON) 
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response registerNewMember(Member member, @Context UriInfo uriInfo){
 		Member registerNewMember = memberServices.registerNewMember(member);
